@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
-import ScrollFloat from '@/app/components/ScrollFloat/ScrollFloat';
 
 export default function Hero() {
   const [text, setText] = useState("")
@@ -28,7 +27,7 @@ export default function Hero() {
         <div className="space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold">
-              <span className="text-white">Halo, I'm</span>
+              <span className="text-white">Halo, I&apos;m</span>
               <br />
               <span className="bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent">
                 Safrizal Huda Kurniawan
@@ -57,7 +56,7 @@ export default function Hero() {
               <Github className="w-6 h-6 text-gray-300 group-hover:text-white" />
             </Link>
             <Link
-              href="www.linkedin.com/in/safrizal-huda-kurniawan-260208379"
+              href="https://www.linkedin.com/in/safrizal-huda-kurniawan-260208379"
               className="p-3 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors duration-200 group"
               target="_blank"
             >
@@ -79,7 +78,8 @@ export default function Hero() {
               CV
             </Link>
             <Link
-              href="https://youtube.com/shorts/xreupPDMhGM?feature=share" target="_blank"
+              href="https://youtube.com/shorts/xreupPDMhGM?feature=share"
+              target="_blank"
               className="px-8 py-3 border border-gray-600 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors duration-200"
             >
               Personal Branding

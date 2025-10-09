@@ -1,6 +1,6 @@
-import { ExternalLink, Github, Calendar } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { ExternalLink, Github, Calendar } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Projects() {
   const projects = [
@@ -8,10 +8,10 @@ export default function Projects() {
       title: "Blog Article Website",
       description:
         "Full-stack blog article website, dan admin dashboard. Dibangun menggunakan Laravel, dan MySQL.",
-      image: "/blog.png?height=300&width=500",
+      image: "/blog.png", // ✅ Removed query string
       technologies: ["Laravel", "MySQL"],
       githubUrl: "https://github.com/safrizal-hk/UAS-Framework-Blog",
-      liveUrl: "#",
+      liveUrl: "#", // Kosong → akan tampil "Coming Soon"
       date: "Des 2023",
       category: "Web Development",
     },
@@ -19,7 +19,7 @@ export default function Projects() {
       title: "Task Productivity App",
       description:
         "Aplikasi mobile untuk manajemen tugas dengan fitur, reminder, dan kolaborasi tim. Menggunakan Flutter dan Supabase.",
-      image: "/mobile.png?height=300&width=500",
+      image: "/mobile.png",
       technologies: ["Flutter", "Supabase"],
       githubUrl: "https://github.com/safrizal-hk/UAS-Mobile-ProductivityApp",
       liveUrl: "#",
@@ -29,15 +29,15 @@ export default function Projects() {
     {
       title: "UI Bicycle Shop",
       description:
-        "UI e-commerce toko sepeda dengan fitur etalase, keranjang, pembayaran, tracking, dan history",
-      image: "/UI.jpg?height=300&width=500",
-      technologies: ["HTML",],
+        "UI e-commerce toko sepeda dengan fitur etalase, keranjang, pembayaran, tracking, dan history.",
+      image: "/UI.jpg",
+      technologies: ["HTML"],
       githubUrl: "https://github.com/safrizal-hk/UAS-UI-TokoSepedaCycle",
       liveUrl: "#",
       date: "Okt 2023",
       category: "UI",
     },
-  ]
+  ];
 
   // const categories = ["All", "Web Development", "Mobile Development", "Machine Learning", "Artificial Intelligence"]
 
@@ -51,7 +51,7 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Filter Categories
+        {/* Filter Kategori (Opsional)
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category, index) => (
             <button
@@ -65,7 +65,7 @@ export default function Projects() {
           ))}
         </div> */}
 
-        {/* Projects Grid */}
+        {/* Grid Project */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
@@ -75,7 +75,7 @@ export default function Projects() {
               <div className="relative overflow-hidden">
                 <Image
                   src={project.image || "/placeholder.svg"}
-                  alt={project.title}
+                  alt={`Thumbnail project ${project.title}`}
                   width={500}
                   height={300}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
@@ -110,20 +110,34 @@ export default function Projects() {
 
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-4">
+                    {/* GitHub Link */}
                     <Link
                       href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center text-gray-400 hover:text-white transition-colors text-sm"
                     >
                       <Github className="w-4 h-4 mr-1" />
                       Code
                     </Link>
-                    <Link
-                      href={project.liveUrl}
-                      className="flex items-center text-gray-400 hover:text-white transition-colors text-sm"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-1" />
-                      Live Demo
-                    </Link>
+
+                    {/* Live Demo Link (only if available) */}
+                    {project.liveUrl && project.liveUrl !== "#" ? (
+                      <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-400 hover:text-white transition-colors text-sm"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-1" />
+                        Live Demo
+                      </Link>
+                    ) : (
+                      <span className="flex items-center text-gray-600 text-sm cursor-not-allowed">
+                        <ExternalLink className="w-4 h-4 mr-1" />
+                        Coming Soon
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -131,7 +145,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Call to Action
+        {/* CTA Tambahan (opsional)
         <div className="text-center mt-16">
           <div className="bg-black/50 backdrop-blur-sm border border-gray-800 rounded-xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-semibold text-white mb-4">Ingin Berkolaborasi?</h3>
@@ -149,5 +163,5 @@ export default function Projects() {
         </div> */}
       </div>
     </section>
-  )
+  );
 }

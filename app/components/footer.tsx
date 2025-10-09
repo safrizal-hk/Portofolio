@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Github, Linkedin, Mail, Instagram, Twitter, Heart } from "lucide-react"
+// import Link from "next/link";
+import { Heart } from "lucide-react"
 
 export default function Footer() {
   const productLinks = [

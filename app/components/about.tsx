@@ -1,5 +1,4 @@
 import { GraduationCap, Code, Trophy } from "lucide-react"
-import ScrollFloat from '@/app/components/ScrollFloat/ScrollFloat';
 
 export default function About() {
   const timeline = [
