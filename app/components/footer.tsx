@@ -27,7 +27,7 @@ export default function Footer() {
             <div>
               <h3 className="font-semibold text-sm mb-2 text-center md:text-left text-white tracking-wide">Ready to get started?</h3>
               <p className="text-sm text-gray-400 leading-relaxed max-w-md text-center md:text-left tracking-wide">
-                Hi, I&apos;m Safrizal Huda Kurniawan, a web development and design enthusiast. Let's work together to bring your ideas to life with innovative and user focused solutions.
+                Hi, I&apos;m Safrizal Huda Kurniawan, a web development and design enthusiast. Let&apos;s work together to bring your ideas to life with innovative and user focused solutions.
               </p>
             </div>
           </div>
