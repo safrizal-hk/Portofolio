@@ -14,8 +14,8 @@ export default function Home() {
       {/* 2. Gunakan "inset-0" (shortcut untuk top, right, bottom, left) dan tambahkan z-index. */}
       <div className="absolute inset-0 z-0">
         <Squares
-          speed={1}
-          squareSize={30}
+          speed={0.5}
+          squareSize={50}
           direction="diagonal"
           borderColor="#333" // Warna lebih redup agar tidak terlalu mencolok
           hoverFillColor="#222"

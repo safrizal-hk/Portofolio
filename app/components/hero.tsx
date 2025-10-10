@@ -72,7 +72,8 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="#projects"
+              href="/CV_Safrizal Huda Kurniawan.pdf"
+              download="CV_Safrizal_Huda_Kurniawan.pdf"
               className="px-8 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200"
             >
               CV
