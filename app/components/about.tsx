@@ -62,10 +62,10 @@ export default function About() {
                   <span className="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                   GPA: 3.47 (Semester 5)
                 </li>
-                <li className="flex items-start">
+                {/* <li className="flex items-start">
                   <span className="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                   [Achievement or award received]
-                </li>
+                </li> */}
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                   Organization: HIMA Teknik Informatika 2024-2025

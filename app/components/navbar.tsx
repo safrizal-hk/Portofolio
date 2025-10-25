@@ -2,19 +2,19 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { Button } from "./ui/button"
+import { useScrollPosition } from "./UseScroll/UseScroll"
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const hasScrolled = useScrollPosition(10)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const body = document.querySelector("body")
+if (body) {
+  body.style.overflow = isMobileMenuOpen ? "hidden" : "auto"
+}
+  }, [isMobileMenuOpen])
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -25,58 +25,86 @@ export default function Navbar() {
   ]
 
   return (
-    <nav
-      role="navigation"
-      aria-label="Main navigation"
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-md border-b border-gray-800" : "bg-transparent"
+    <header
+      className={`fixed left-0 right-0 z-50 px-6 lg:px-12 transition-all duration-300 ease-in-out ${
+        hasScrolled ? "top-4" : "top-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
-            <Link href="#home" className="text-xl font-bold text-white hover:text-gray-300 transition-colors">
-              Portfolio
-            </Link>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white p-2"
-              aria-label="Toggle navigation menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+      <nav
+        className={`relative mx-auto flex items-center justify-between px-6
+          bg-black/40 backdrop-blur-lg 
+          border border-gray-700 shadow-lg rounded-full
+          transition-all duration-500 ease-in-out
+          ${hasScrolled ? "py-2 max-w-3xl" : "py-4 max-w-6xl"}
+          ${
+            isMobileMenuOpen
+              ? "scale-95 bg-black/60 backdrop-blur-xl"
+              : "scale-100"
+          }`}
+      >
+        {/* === Logo === */}
+        <div className="flex-shrink-0">
+          <Link
+            href="#home"
+            className="font-bold text-xl tracking-tight text-white hover:text-gray-300 transition-colors"
+          >
+            Portfolio
+          </Link>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden bg-black/90 backdrop-blur-md border-t border-gray-800">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+        {/* === Menu Desktop === */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* === Hamburger Button === */}
+        <div className="flex md:hidden items-center">
+          <button
+            className="flex flex-col space-y-1.5 p-2 z-20"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            ></span>
+            <span
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                isMobileMenuOpen ? "opacity-0" : ""
+              }`}
+            ></span>
+            <span
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            ></span>
+          </button>
+        </div>
+
+        {/* === Menu Mobile === */}
+        {isMobileMenuOpen && (
+          <div
+            className="md:hidden absolute top-full left-0 right-0 mt-4 rounded-2xl 
+                       bg-black/80 backdrop-blur-2xl 
+                       border border-gray-700 shadow-2xl
+                       animate-in fade-in slide-in-from-top-4 duration-300"
+          >
+            <div className="p-6 flex flex-col space-y-4">
               {navItems.map((item) => (
                 <Link
-                  key={item.href}
+                  key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
-                  onClick={() => setIsOpen(false)}
+                  className="block text-gray-300 hover:text-white transition-colors font-medium text-lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
@@ -84,7 +112,7 @@ export default function Navbar() {
             </div>
           </div>
         )}
-      </div>
-    </nav>
+      </nav>
+    </header>
   )
 }

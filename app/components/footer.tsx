@@ -11,12 +11,12 @@ export default function Footer() {
   const socialMediaLinks = [
     { name: "Instagram", href: "https://instagram.com/safrizalhudaa" },
     { name: "Twitter", href: "https://twitter.com/yourusername" },
-    { name: "GitHub", href: "https://github.com/safrizal-ux" },
+    { name: "GitHub", href: "https://github.com/safrizal-hk" },
   ];
 
   return (
     <footer className="w-full bg-black/50 backdrop-blur-sm text-gray-300 px-6 md:px-12 lg:px-16 py-10 border-t border-gray-800 rounded-xl">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between border-b border-gray-800 pb-10">
           
           {/* Bagian Kiri */}
