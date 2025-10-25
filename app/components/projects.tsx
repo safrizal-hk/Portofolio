@@ -60,7 +60,7 @@ export default function Projects() {
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             {/* Diubah ke Bahasa Inggris */}
-            Some of the projects I've worked on during my college and
+            Some of the projects I&apos;ve worked on during my college and
             self-learning.
           </p>
         </div>
